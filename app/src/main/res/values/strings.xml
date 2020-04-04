@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Blood Bank Semester Project</string>
+    <string name="sign_up"><u>Sign Up</u></string>
 </resources>
