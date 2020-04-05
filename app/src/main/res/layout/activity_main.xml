@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="visible"
+    android:background="@android:color/white"
     tools:context=".Actvities.MainActivity">
 
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -19,5 +20,51 @@
 
         app:title="@string/app_name"
         app:titleTextColor="@android:color/white" />
+<LinearLayout
+    android:id="@+id/linearlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:gravity="center"
+    android:layout_below="@id/toolbar"
+    android:background="#FAFAFA"
+    >
+    <TextView
+        android:id="@+id/pick_location"
+        android:padding="5dp"
+        android:layout_margin="8dp"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:textSize="16sp"
+
+        android:textColor="@android:color/black"
+        android:drawableEnd="@drawable/ic_location_on_black_24dp"
+        android:textStyle="italic"
+        android:drawableTint="@android:color/black"
+        android:text="Choose location"
+        android:layout_width="wrap_content"
+        android:textCursorDrawable="@drawable/ic_location_on_black_24dp"
+        android:layout_height="wrap_content"/>
+</LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_below="@+id/linearlayout"
+        android:layout_width="match_parent"
+        android:layout_above="@+id/make_request_button"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/make_request_button"
+        android:text="Make Request"
+        android:textSize="16sp"
+
+        android:background="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textAlignment="center"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
