@@ -2,23 +2,38 @@ package com.example.bloodbanksemesterproject.Actvities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.bloodbanksemesterproject.Adapters.RequestAdapter;
 import com.example.bloodbanksemesterproject.DataModels.RequestDataModel;
 import com.example.bloodbanksemesterproject.R;
+import com.example.bloodbanksemesterproject.Utils.Endpoints;
+import com.example.bloodbanksemesterproject.Utils.VolleySingleton;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
@@ -58,20 +73,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
 private void populateHomePage() {
-        RequestDataModel requestDataModel = new RequestDataModel("Message: Blah Blah\n" +
-                "Blah Blah Blah Blah\n" +
-                "Blah Blah Blah Blah\n" +
-                "Blah Blah Blah Blah\n" +
-                "Blah Blah Blah Blah\n" +
-                "Blah Blah Blah Blah ", "https://images.unsplash.com/photo-1532611322744-369123d95bd3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");
+    StringRequest stringRequest = new StringRequest(Request.Method.POST, Endpoints.get_requests, new Response.Listener<String>() {
+        @Override
+        public void onResponse(String response) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<RequestDataModel>>() {}.getType();
+            List<RequestDataModel> dataModels = gson.fromJson(response, type);
+            requestDataModels.addAll(dataModels);
+            requestAdapter.notifyDataSetChanged();
+        }
+    }, new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+            Toast.makeText(MainActivity.this, "Something bad happened:(",Toast.LENGTH_SHORT).show();
+            Log.d("VOLLEY", error.getMessage());
+        }
+    }) {
+        @Override
+        protected Map<String, String> getParams() throws AuthFailureError {
+            Map<String, String> parameters = new HashMap<>();
 
-    requestDataModels.add(requestDataModel);
-    requestDataModels.add(requestDataModel);
-    requestDataModels.add(requestDataModel);
-    requestDataModels.add(requestDataModel);
-    requestDataModels.add(requestDataModel);
-    requestDataModels.add(requestDataModel);
-    requestDataModels.add(requestDataModel);
-    requestAdapter.notifyDataSetChanged();
+            return parameters;
+        }
+    };
+    VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 }
