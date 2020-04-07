@@ -62,10 +62,12 @@ TextView signUpTextView;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Endpoints.login_url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                if(response.equals("Success")) {
+                if(!response.equals("Your credentials are invalid")) {
                     Toast.makeText(LoginActivity.this, response, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("email", email).apply();
+                    LoginActivity.this.finish();
+                    PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).edit().putString("city", response).apply();
                     LoginActivity.this.finish();
                 }
                 else {

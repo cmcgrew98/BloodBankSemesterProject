@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 private void populateHomePage() {
+    final String city =
+            PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getString("city", "no_city");
     StringRequest stringRequest = new StringRequest(Request.Method.POST, Endpoints.get_requests, new Response.Listener<String>() {
         @Override
         public void onResponse(String response) {
@@ -92,7 +94,7 @@ private void populateHomePage() {
         @Override
         protected Map<String, String> getParams() throws AuthFailureError {
             Map<String, String> parameters = new HashMap<>();
-
+            parameters.put("city", city);
             return parameters;
         }
     };
