@@ -61,7 +61,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                 share.putExtra(Intent.EXTRA_TEXT, holder.message.getText().toString() + "\n\n Contact: " + dataSet.get(position).getEmail());
                 share.putExtra(Intent.EXTRA_SUBJECT, "Would you be able to help?");
                 context.startActivity(Intent.createChooser(share, "Share"));
-                
+
 
             }
         });
