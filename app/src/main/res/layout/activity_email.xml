@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Actvities.EmailActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To: "/>
+    <EditText
+        android:id="@+id/toEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Subject: "/>
+    <EditText
+        android:id="@+id/subjectEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"/>
+
+    <FrameLayout
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/border_background"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/messageEditText"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:minLines="6"
+            android:maxLines="10"
+            android:hint="Message"
+            android:padding="10dp"
+            android:textAlignment="gravity"
+            android:gravity="top"
+            android:cursorVisible="false"
+            android:background="@null"
+            android:textColorHint="@android:color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/sendButton"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:background="@drawable/button_bg"
+        android:text="Send"
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

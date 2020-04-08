@@ -68,8 +68,14 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
  mRecyclerView.setLayoutManager(layoutManager);
  requestAdapter = new RequestAdapter(requestDataModels, this);
+        mRecyclerView.setAdapter(requestAdapter);
  populateHomePage();
- mRecyclerView.setAdapter(requestAdapter);
+ TextView chooseLocation = findViewById(R.id.pick_location);
+ String location = PreferenceManager.getDefaultSharedPreferences(this).getString("city", "no_city_found");
+ if(!location.equals("no_city_found")) {
+     chooseLocation.setText(location);
+ }
+
     }
 
 private void populateHomePage() {

@@ -3,6 +3,7 @@ package com.example.bloodbanksemesterproject.Actvities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -55,7 +56,11 @@ public class SearchActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
             //json response
-
+            Intent intent = new Intent(SearchActivity.this, SearchResults.class);
+            intent.putExtra("city", city);
+            intent.putExtra("blood_group",bloodGroup);
+            intent.putExtra("json", response);
+            startActivity(intent);
             }
         }, new Response.ErrorListener() {
             @Override

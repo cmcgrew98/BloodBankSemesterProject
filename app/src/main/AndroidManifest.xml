@@ -3,7 +3,7 @@
     package="com.example.bloodbanksemesterproject">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Actvities.MakeRequestActivity"></activity>
+        <activity android:name=".Actvities.EmailActivity"></activity>
+        <activity android:name=".Actvities.SearchResults" />
+        <activity android:name=".Actvities.MakeRequestActivity" />
         <activity android:name=".Actvities.SearchActivity" />
         <activity android:name=".Actvities.LoginActivity" />
         <activity android:name=".Actvities.RegisterActivity" />
