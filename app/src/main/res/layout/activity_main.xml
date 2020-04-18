@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+name: Clara McGrew
+date of presentation: 4/21/2020
+project: Android Blood Bank semester project
+-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -41,7 +46,7 @@
         android:drawableEnd="@drawable/ic_location_on_black_24dp"
         android:textStyle="italic"
         android:drawableTint="@android:color/black"
-        android:text="Choose location"
+        android:text="@string/choose_location"
         android:layout_width="wrap_content"
         android:textCursorDrawable="@drawable/ic_location_on_black_24dp"
         android:layout_height="wrap_content"/>
@@ -55,7 +60,7 @@
 
     <TextView
         android:id="@+id/make_request_button"
-        android:text="Make Request"
+        android:text="@string/request_string"
         android:textSize="16sp"
 
         android:background="@color/colorPrimary"

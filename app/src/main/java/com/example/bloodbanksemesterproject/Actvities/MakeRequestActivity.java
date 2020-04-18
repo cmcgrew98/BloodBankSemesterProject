@@ -43,7 +43,14 @@ import java.net.URISyntaxException;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
 public class MakeRequestActivity extends AppCompatActivity {
+    /*
+    name: Clara McGrew
+    date of presentation: 4/21/2020
+    project: Android Blood Bank Semester project
+     */
 
+
+    //These are the variables for this activity
     EditText message;
     TextView chooseImage;
     ImageView postImage;
@@ -55,6 +62,8 @@ public class MakeRequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make_request);
         AndroidNetworking.initialize(getApplicationContext());
+
+        //Binds the variables to their ids.
         message = findViewById(R.id.message);
         chooseImage = findViewById(R.id.choose_text);
         postImage = findViewById(R.id.post_image);
@@ -70,6 +79,7 @@ public class MakeRequestActivity extends AppCompatActivity {
             }
         });
 
+        //This is the onclicklistener for choosing an image for uploading.
         chooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,6 +89,7 @@ public class MakeRequestActivity extends AppCompatActivity {
         });
     }
 
+    //A lot of this code below is copied from
     private void pickImage(){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
@@ -96,6 +107,7 @@ public class MakeRequestActivity extends AppCompatActivity {
         }
     }
 
+    //This is used to request permission to pick an image.
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -109,7 +121,7 @@ public class MakeRequestActivity extends AppCompatActivity {
             }
         }
     }
-
+//This is the method that will enable you to upload the message.
     private void uploadRequest(String message){
         //code that will upload the message
         String path = "";
@@ -159,7 +171,7 @@ public class MakeRequestActivity extends AppCompatActivity {
 
     }
 
-
+//OnActivityResult  method called for uploading the image.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -171,7 +183,7 @@ public class MakeRequestActivity extends AppCompatActivity {
 
         }
     }
-
+//This is the isValid method to make sure that the user uploads a message and an image.
     private boolean isValid(){
         if(message.getText().toString().isEmpty()) {
             showMessage("Message is empty. Please enter a message in the message box");
@@ -183,10 +195,14 @@ public class MakeRequestActivity extends AppCompatActivity {
         return true;
     }
 
+    //This is the method that is called above in various different ways.
     private void showMessage(String message){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
+    //All of this code below
+    // is copied from the code here: https://gist.github.com/RISHABH3821/5e03bb3863a7ff22f137a76a0e0fb421
+    //It is used for a file path, and in this case it helps with getting images.
     @SuppressLint("NewApi")
     private String getPath(Uri uri) throws URISyntaxException {
         final boolean needToCheckUri = Build.VERSION.SDK_INT >= 19;

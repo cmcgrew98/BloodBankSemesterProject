@@ -4,6 +4,16 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Donor {
+    /*
+    name: Clara McGrew
+    date of presentation: 4/21/2020
+    project: Android Blood Bank semester project
+    This is a class that was created from a Json object, which was referred to in the blood bank tutorials.
+    The following website was used:
+    http://www.jsonschema2pojo.org/
+     */
+
+
 
 @SerializedName("name")
 @Expose

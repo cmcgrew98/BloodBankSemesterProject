@@ -30,14 +30,25 @@ import java.util.List;
 import java.util.Map;
 
 public class SearchActivity extends AppCompatActivity {
+    /*
+    name: Clara  McGrew
+    project: Android Blood Bank semester project
+    date of presentation 4/21/2020
+     */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        //Declares the EditText variables.
         final EditText bloodGroupEditText, cityEditText;
+
+        //Binds the edittext variables to their respective ids.
         bloodGroupEditText = findViewById(R.id.et_bloodGroup);
         cityEditText = findViewById(R.id.city_et);
+
+        //Binds the find donors button to its id.
         Button findDonorsButton = findViewById(R.id.find_donors);
         findDonorsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +61,7 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
-
+//Method called to get the search results.
     private void getSearchResults(final String bloodGroup, final String city) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Endpoints.search_donors, new Response.Listener<String>() {
             @Override
@@ -80,7 +91,7 @@ public class SearchActivity extends AppCompatActivity {
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-
+        //Checks to see of the pereson is searching for valid data and not leaving anything blank.
     private boolean isValid(String bloodGroup, String city) {
         List<String> validBloodGroups = new ArrayList<>();
         validBloodGroups.add("A+");
@@ -101,6 +112,8 @@ public class SearchActivity extends AppCompatActivity {
          }
          return true;
 }
+
+//Show message is called from everything above.
 private void showMessage(String message) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 }

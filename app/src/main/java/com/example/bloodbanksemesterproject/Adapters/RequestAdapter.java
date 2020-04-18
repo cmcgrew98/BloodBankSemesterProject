@@ -21,16 +21,24 @@ import com.example.bloodbanksemesterproject.R;
 import java.util.List;
 
 public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHolder> {
+    /*
+    name: Clara McGrew
+    date of presentation: 4/21/2020
+    project: Android blood bank semester project
+     */
 
+    //These are the variables.
     private List<RequestDataModel> dataSet;
     private Context context;
 
+    //Constructor for the request adapter
     public RequestAdapter(
             List<RequestDataModel> dataSet, Context context) {
         this.dataSet = dataSet;
         this.context = context;
     }
 
+    //The viewholder, which inflates the request item layout.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,12 +47,14 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
         return new ViewHolder(view);
     }
 
-
+    //sets everything up, as far as the message and image are concerned.
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder,
                                  final int position) {
 
         holder.message.setText(dataSet.get(position).getMessage());
+
+        //Uses the popular library Glide to load the image.
         Glide.with(context).load(dataSet.get(position).getUrl()).into(holder.imageView);
         holder.callButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +63,8 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                 context.startActivity(intent);
             }
         });
+
+        //Sets the sharebutton's onclick listener to share it.
         holder.shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,13 +79,13 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
         });
     }
 
-
+    //Returns the size of the dataset.
     @Override
     public int getItemCount() {
         return dataSet.size();
     }
 
-
+    //Inner class with the viewholder, which helps to load the respective items.
     class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView message;
@@ -87,7 +99,5 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
             shareButton = itemView.findViewById(R.id.share_button);
 
         }
-
     }
-
 }

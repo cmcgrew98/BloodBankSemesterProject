@@ -27,13 +27,24 @@ import java.util.List;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
+    /*
+    name: Clara McGrew
+    date of Presentation: 4/21/2020
+    project; Android Blood Bank semester project
+     */
+
+    //These are the EditText variables
     private EditText nameEditText, cityEditText, mobileNumberEditText,
             emailEditText, bloodGroupEditText, passwordEditText;
+
+    //This is the button
     private Button submitButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        //This binds the variables to their respective ids.
         nameEditText = findViewById(R.id.name);
         cityEditText = findViewById(R.id.city);
         mobileNumberEditText = findViewById(R.id.mobilenumber);
@@ -41,6 +52,8 @@ public class RegisterActivity extends AppCompatActivity {
         bloodGroupEditText = findViewById(R.id.bloodgroup);
         passwordEditText = findViewById(R.id.password);
         submitButton = findViewById(R.id.submit_button);
+        //This sets the onclick listener for the button, so that the email, name, city, and mobile number
+        //are all submitted to the database.
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,12 +67,11 @@ public class RegisterActivity extends AppCompatActivity {
                 if(isValid(name, city, mobileNumber, email, bloodGroup, password)) {
                     register(name, city, mobileNumber, email, bloodGroup, password);
                 }
-
-
             }
         });
     }
 
+    //Register method which helps to make a request to the database to create a new user.
     private void register(final String name, final String city, final String mobileNumber, final String email, final String bloodGroup, final String password) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Endpoints.register_url, new Response.Listener<String>() {
             @Override
@@ -95,9 +107,14 @@ public class RegisterActivity extends AppCompatActivity {
         };
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
+
+    //Show message called whenever there is a need.
     private void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+    //Checks to make sure that stuff is validated properly. Such as making sure that the blood group is valid
+    //and the other things are not blank.
     private boolean isValid(String name, String city, String mobileNumber, String email, String bloodGroup,
     String password
     ) {

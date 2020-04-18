@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ name: Clara McGrew
+ date of presentation: 4/21/2020
+ project: Android Blood Bank semester project
+ -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -44,7 +49,7 @@
             >
             <EditText
                 android:id="@+id/password"
-                android:hint="Password"
+                android:hint="@string/password_string_resource"
                 android:inputType="textPassword"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
@@ -58,14 +63,14 @@
             android:textAllCaps="false"
             android:textStyle="bold"
             android:background="@drawable/button_bg"
-            android:text="Login"
+            android:text="@string/login_string"
             android:layout_margin="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <TextView
             android:layout_marginTop="30dp"
-            android:text="Or"
+            android:text="@string/or_text"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             android:textAlignment="center"

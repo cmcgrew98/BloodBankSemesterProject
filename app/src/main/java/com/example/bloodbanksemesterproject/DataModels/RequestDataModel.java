@@ -4,6 +4,12 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class RequestDataModel {
+    /*
+    name: Clra McGrew
+    date of presentation: 4/21/2020
+    project: Android Blood Bank semester project
+    This is yet another class that was developed from a Json object on the website  http://www.jsonschema2pojo.org/
+     */
 
     @SerializedName("id")
     @Expose

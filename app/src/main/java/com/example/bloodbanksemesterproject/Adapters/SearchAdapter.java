@@ -27,16 +27,24 @@ import java.util.List;
 import static androidx.core.content.ContextCompat.startActivity;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
+    /*
+    name: Clara McGrew
+    date of presentation: 4/21/2020
+    project: Android blood bank semester project
+     */
 
+    //These are the declared variables.
     private List<Donor> dataSet;
     private Context context;
 
+    //This is the SearchAdapter constructor.
     public SearchAdapter(
             List<Donor> dataSet, Context context) {
         this.dataSet = dataSet;
         this.context = context;
     }
 
+//Viewholder with inflates the donor item layout.
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -45,7 +53,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         return new ViewHolder(view);
     }
 
-
+//OnBindViewHolder method to show results.
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder,
                                  final int position) {
@@ -54,7 +62,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         string += "\nCity: " + dataSet.get(position).getCity();
         holder.message.setText(string);
 
-        holder.callButton.setOnClickListener(new View.OnClickListener() {
+        holder.emailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //for later
@@ -65,23 +73,25 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         });
     }
 
-
+//getItemCount returns the size.
     @Override
     public int getItemCount() {
         return dataSet.size();
     }
 
-
+//Inner ViewHolder class
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        //Variables for the class
         TextView message;
-        ImageView imageView, callButton;
+        ImageView imageView, emailButton;
 
         ViewHolder(final View itemView) {
             super(itemView);
+            //Binds the variables to their respective ids.
             message = itemView.findViewById(R.id.message);
             imageView = itemView.findViewById(R.id.image);
-            callButton = itemView.findViewById(R.id.call_button);
+           emailButton = itemView.findViewById(R.id.call_button);
 
         }
 
